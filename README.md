@@ -72,19 +72,8 @@ An MLP belongs to a class of feedforward artificial neural networks. It has the 
 - Optimization algorithms like Adam are used to update the weights and biases of the network during training.
 
 
-### Brief to the Augmentation Data
 
-
-## 📦 Project Structure
-
-The repository is organized into the following directories:
-
-- **/data**: This directory contains the facial expression dataset. You'll need to download the dataset and place it here before running the notebooks. (Download link provided below)
-- **/notebooks**: This directory contains the Jupyter notebook ```EDA.ipynb```. This notebook guides you through exploratory data analysis (EDA) and classification tasks.
-
-
-
-## 🧱 Our proposed methods
+## 💡 Our proposed methods
 
 ### Dealing with unbalanced data
 
@@ -127,7 +116,7 @@ Then we use pretrained-encoder to vectorize input images into 256 dimensions vec
 
 ![](https://cdn.discordapp.com/attachments/893738488137142286/1254078699028877342/meomeo.png?ex=66782f4d&is=6676ddcd&hm=8a92efc5a99ed0062d7126884a545665d23622cf1392a4d2c283965b6238e1ec&)
 
-## 🏁 Experimental Results
+## 🚩 Experimental Results
 
 |   | Features Extractor | Model | Accuracy | Precision | Recall | F1-score |
 |:-:|:-|:-:|:-|:-|:-|:-|
@@ -145,9 +134,8 @@ Then we use pretrained-encoder to vectorize input images into 256 dimensions vec
 
 The above result table indicates that:
 
-| Models | Descriptions |
+| Feature extractor | Descriptions |
 |:-|:-|
-|XGBoost with the original data (None) has the highest accuracy among the three input data, with 0.4419. |This can be attributed to the original data providing richer information about critical features. Besides, XGBoost, being a powerful ensemble algorithm, excels in learning complex, diverse and informative patterns from data.|
-|LightGBM with data after PCA ranks second with an accuracy of 0.4272 | This suggests that PCA may not effectively eliminate non-essential information for gradient-boosting algorithms like LightGBM|
-|XBoost with data using Autoencoder has an accuracy of 0.41, the lowest among the three types of input data, but still the highest within the Auto Encoder group. |Auto Encoder was used to learn latent features of the data; however, in this case, the re-encoding process may not have provided sufficient information for XGBoost to perform as effectively as with the Original data. |
-
+|Original Data|The XGBoost model achieves the highest accuracy of 0.4419 and an F1-score of 0.42. This indicates that XGBoost performs the best when using the original data. A plausible reason for this is that XGBoost is capable of effectively leveraging the raw features present in the original data without requiring additional preprocessing steps. The model's ability to capture complex interactions within the data likely contributes to its superior performance.|
+|PCA data | When using PCA to preprocess the data, the MLP model achieves the highest accuracy of 0.4016 and an F1-score of 0.39. PCA reduces the dimensionality of the data, eliminating noise and potentially speeding up the training process. However, due to some loss of information compared to the original data, the performance is slightly lower. MLP's capability to utilize the transformed features from PCA allows it to achieve the best results among the models using PCA-processed data.|
+|Auto Encoder |For data processed through an Auto Encoder, the XGBoost model again achieves the highest scores with an accuracy of 0.41 and an F1-score of 0.41. Auto Encoders learn new feature representations from the data, retaining essential information while removing noise. XGBoost's ability to capitalize on these new feature representations enables it to perform nearly as well as it does with the original data. This highlights XGBoost's versatility and robustness in handling various types of data preprocessing.|
