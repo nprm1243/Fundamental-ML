@@ -97,7 +97,7 @@ At first, we "unzip" data into folders for futher process
 ```
 
 <p align="center">
-    <img src="https://cdn.discordapp.com/attachments/893738488137142286/1254061057375338506/counting_labels.png?ex=66781edf&is=6676cd5f&hm=c2b7f5a55817a5ca0eb11490fa33eca92f4b97756fb664ffe4431d0ed5c67241&" width="500" align="center">
+    <img src="./materials/counting_labels.png" width="500" align="center">
 </p>
 
 Looking at counting plot above, we can see that our data is heavy unbalaced, so we devided it into train/valid/test subset and then choosed to downsample data having label 3 to 4000 samples and upsample data in training set with label 0, 1, 2, 4, 5, 6 to 4000 using some image augmentation methods: `RandomRotation`, `RandomHorizontalFlip`, `ColorJitter`, `RandomAdjustSharpness` and `Normalize`.
@@ -106,7 +106,7 @@ Looking at counting plot above, we can see that our data is heavy unbalaced, so 
 
 To encode image, we simply use a simple CNN-based Auto encoder
 
-![](https://cdn.discordapp.com/attachments/893738488137142286/1254078699461152768/autoencoder.png?ex=66782f4d&is=6676ddcd&hm=595078436c281af940feeadadd5922aabc6d71741e4e9b26de1a73a760fe820e&)
+![](./materials/autoencoder.png)
 
 It can be seen that our auto encoder model can extract features good!
 
@@ -114,7 +114,7 @@ It can be seen that our auto encoder model can extract features good!
 
 Then we use pretrained-encoder to vectorize input images into 256 dimensions vectors and pass them into machine learning models to predict facial expression.
 
-![](https://cdn.discordapp.com/attachments/893738488137142286/1254078699028877342/meomeo.png?ex=66782f4d&is=6676ddcd&hm=8a92efc5a99ed0062d7126884a545665d23622cf1392a4d2c283965b6238e1ec&)
+![](./materials/pipline.png)
 
 ## 🚩 Experimental Results
 
